@@ -1190,7 +1190,18 @@ namespace TUST_gateway_authentication
         }
         private void TrayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-            ShowMainWindow();
+            // 判断窗口当前是否可见
+            if (IsVisible)
+            {
+                // 窗口可见时，隐藏窗口（仅保留托盘）
+                Hide();
+                UpdateStatus("窗口已隐藏，托盘继续运行");
+            }
+            else
+            {
+                // 窗口隐藏时，显示窗口
+                ShowMainWindow();
+            }
         }
 
         private void ShowMainWindow()
